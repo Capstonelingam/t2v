@@ -13,4 +13,4 @@ from diffusers import EulerDiscreteScheduler      #### V2 has a different schedu
 
 
 class TextToVideoPipeline(StableDiffusionPipeline):
-    def init
+    def 
