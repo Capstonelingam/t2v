@@ -1,7 +1,6 @@
 # use as reference only
 
 
-
 from diffusers import StableDiffusionPipeline
 import torch
 from dataclasses import dataclass
