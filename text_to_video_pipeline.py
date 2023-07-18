@@ -1,6 +1,3 @@
-# use as reference only
-
-
 from diffusers import StableDiffusionPipeline
 import torch
 from dataclasses import dataclass
@@ -116,7 +113,6 @@ class TextToVideoPipeline(StableDiffusionPipeline):
 
         warped = rearrange(warped, '(b f) c h w -> b c f h w', f=f)
         return warped
-
 
     def DDIM_backward(self, num_inference_steps, timesteps, skip_t, t0, t1, do_classifier_free_guidance, null_embs, text_embeddings, latents_local,
                       latents_dtype, guidance_scale, guidance_stop_step, callback, callback_steps, extra_step_kwargs, num_warmup_steps):
