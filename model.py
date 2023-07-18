@@ -15,8 +15,13 @@ on_huggingspace = os.environ.get("SPACE_AUTHOR_NAME") == "PAIR"
 
 
 class ModelType(Enum):
-    Text2Video = 2
-   
+    Pix2Pix_Video = 1,
+    Text2Video = 2,
+    ControlNetCanny = 3,
+    ControlNetCannyDB = 4,
+    ControlNetPose = 5,
+    ControlNetDepth = 6,
+
 
 class Model:
     def __init__(self, device, dtype, **kwargs):
@@ -24,7 +29,7 @@ class Model:
         self.dtype = dtype
         self.generator = torch.Generator(device=device)
         self.pipe_dict = {
-            ModelType.Text2Video: TextToVideoPipeline
+            ModelType.Text2Video: TextToVideoPipeline,
            
         }
         self.controlnet_attn_proc = utils.CrossFrameAttnProcessor(
