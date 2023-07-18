@@ -82,7 +82,8 @@ class Model:
                          generator=self.generator,
                          **kwargs)
 
-    def inference(self, split_to_chunks=False, chunk_size=8, **kwargs):
+    def inference(self, split_to_chunks=False, 
+                  chunk_size=8, **kwargs):
         if not hasattr(self, "pipe") or self.pipe is None:
             return
 
@@ -299,7 +300,7 @@ class Model:
             video, apply_pose_detect=False).to(self.device).to(self.dtype)
         f, _, h, w = video.shape
         self.generator.manual_seed(seed)
-        latents = torch.randn((1, 4, h//8, w//8), dtype=self.dtype,
+        latents = torch.randn((1scheduler=DDIMScheduler(), 4, h//8, w//8), dtype=self.dtype,
                               device=self.device, generator=self.generator)
         latents = latents.repeat(f, 1, 1, 1)
         result = self.inference(image=control,
